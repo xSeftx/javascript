@@ -1,16 +1,16 @@
 'use strict';
 
-let money = prompt('Ваш месячный доход?');
+let money = +prompt('Ваш месячный доход?');
 const income = 'подработка'; 
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую'); 
 let deposit = confirm('Есть ли у вас депозит в банке?'); 
 const mission = 200000; 
 const period = 10;
 let firstExpenses = prompt('Введите обязательную статью расходов?');
+let firstPrice = +prompt('Во сколько это обойдется?');
 let secondExpenses = prompt('Введите обязательную статью расходов?');
-let firstPrice = prompt('Во сколько это обойдется?');
-let secondPrice = prompt('Во сколько это обойдется?');
-let budgetMonth = +money - (+firstPrice + +secondPrice);  //тут идет подсчет 'Буджет на месяц'.
+let secondPrice = +prompt('Во сколько это обойдется?');
+let budgetMonth = money - (firstPrice + secondPrice);  //тут идет подсчет 'Буджет на месяц'.
 let missionMonth = mission / budgetMonth;   //создал дополнительную переменную чтобы результат вычеслений можно было округлить.
 let budgetDay = budgetMonth / 30;
 

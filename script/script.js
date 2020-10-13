@@ -10,7 +10,6 @@ let firstExpenses = prompt('Введите обязательную статью
 let firstPrice = +prompt('Во сколько это обойдется?', 3000);
 let secondExpenses = prompt('Введите обязательную статью расходов?', 'свет');
 let secondPrice = +prompt('Во сколько это обойдется?', 1600);
-let budgetDay = accumulatedMonth / 30;
 let showTypeOf = function(data) {
     console.log(data, typeof(data));
 };
@@ -36,6 +35,7 @@ let getTargetMonth = function(task=mission, ability=accumulatedMonth) {
 };
 
 console.log('Цель будет достигнута за: ' + Math.ceil(getTargetMonth()) + ' месяцев');
+let budgetDay = accumulatedMonth / 30;
 console.log('Бюджет на день: ' + Math.floor(budgetDay));
 
 let getStatusIncome = function(){

@@ -13,7 +13,7 @@ const period = 10;
 
 let start = function() {
     do {
-        money = prompt('Введите ваш месячный доход?');
+        money = +prompt('Введите ваш месячный доход?');
     } 
     while(isNaN(parseFloat(money)));
     

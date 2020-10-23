@@ -217,7 +217,7 @@ let startOn = function(){
 startOn();
 btnExpenses.addEventListener('click', appData.addExpensesBlock);
 btnIncome.addEventListener('click', appData.addIncomeBlock);
-periodSelect.addEventListener('change', appData.getPeriod);
+periodSelect.addEventListener('click', appData.getPeriod);
 
 
 

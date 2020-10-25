@@ -87,8 +87,10 @@ let appData = {
 
     addExpensesBlock: function() {        
         let cloneExpensesItem = expensesItems[0].cloneNode(true);
+        cloneExpensesItem.querySelector('.expenses-amount').value=''; 
+        cloneExpensesItem.querySelector('.expenses-title').value=''; 
         expensesItems[0].parentNode.insertBefore(cloneExpensesItem, btnExpenses);
-        expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems = document.querySelectorAll('.expenses-items');        
         if(expensesItems.length === 3){
             btnExpenses.style.display = 'none';
         }
@@ -97,20 +99,25 @@ let appData = {
     getExpenses: function(){
         expensesItems.forEach(function(item){
             let itemExpenses = item.querySelector('.expenses-title').value;
-            let cashExpenses = item.querySelector('.expenses-amount').value;
-            if(itemExpenses !== '' && cashExpenses !== ''){
+            let cashExpenses = item.querySelector('.expenses-amount').value;            
+            if(itemExpenses !== '' && cashExpenses !== ''){                
                 appData.expenses[itemExpenses] = cashExpenses;
+
             }
         });
     },
 
-    addIncomeBlock: function(){
+    addIncomeBlock: function(){            
         let cloneIncomeItem = incomeItem[0].cloneNode(true);
+        cloneIncomeItem.querySelector('.income-title').value=''; 
+        cloneIncomeItem.querySelector('.income-amount').value='';                         
         incomeItem[0].parentNode.insertBefore(cloneIncomeItem, btnIncome);
-        incomeItem = document.querySelectorAll('.income-items');
+        incomeItem = document.querySelectorAll('.income-items');               
         if(incomeItem.length === 3){
             btnIncome.style.display = 'none';
-        }
+        }        
+        
+              
     },
 
 
@@ -118,9 +125,11 @@ let appData = {
         incomeItem.forEach(function(item){
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
-            if (itemIncome !== '' && cashIncome !== ''){
-                appData.income[itemIncome] = cashIncome;
+            if (itemIncome !== '' && cashIncome !== ''){                
+                appData.income[itemIncome] = cashIncome;                
+                
             }
+            
         }) ;  
         for (let key in appData.income){
             appData.incomeMonth += +appData.income[key];
@@ -216,8 +225,8 @@ let startOn = function(){
 
 startOn();
 btnExpenses.addEventListener('click', appData.addExpensesBlock);
-btnIncome.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('click', appData.getPeriod);
+btnIncome.addEventListener('click', appData.addIncomeBlock);
 
 
 

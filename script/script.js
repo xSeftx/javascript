@@ -261,19 +261,23 @@ AppData.prototype.reboot = function(){
 
 };
 
-
-
-const appData = new AppData();
-
-
-
-start.addEventListener('click', appData.start.bind(appData));
+AppData.prototype.addEvent = function() {
+    start.addEventListener('click', appData.start.bind(appData));
 btnExpenses.addEventListener('click', appData.addExpensesBlock);
 btnIncome.addEventListener('click', appData.addIncomeBlock);
 cancel.addEventListener('click', appData.reboot.bind(appData));
 periodSelect.addEventListener('click', function(){
     titlePeriodAmount.innerHTML = periodSelect.value;
 });
+};
+
+
+
+const appData = new AppData();
+
+appData.addEvent();
+
+
 
 
 

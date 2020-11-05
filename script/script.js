@@ -31,6 +31,7 @@ const start = document.getElementById('start'),
     depositAmount = document.querySelector('.deposit-amount'),
     depositPercent = document.querySelector('.deposit-percent');
     
+    console.log(inputOff);
 
 let incomeItem = document.querySelectorAll('.income-items'),
     expensesItems = document.querySelectorAll('.expenses-items');
@@ -60,9 +61,9 @@ class AppData {
             depositPercent.value = 0;
             return;
         }
-
-        if(salaryAmount.value !== ''){
-            inputOff.forEach(function (item) {
+        
+        if(salaryAmount.value !== ''){            
+            inputOff.forEach(function (item) {                
                 item.setAttribute('disabled', 'true');
             });
         }else{
@@ -273,7 +274,7 @@ class AppData {
         
     }    
 
-        
+    
 
 }
 
@@ -285,9 +286,18 @@ class AddEvent extends AppData{
         cancel.addEventListener('click', this.reboot.bind(appData));  
         checkBox.addEventListener('change', this.depositHandler.bind(this));           
         periodSelect.addEventListener('click', (e) => {
-        titlePeriodAmount.innerHTML = periodSelect.value;
-                     
+        titlePeriodAmount.innerHTML = periodSelect.value;       
+        });       
             
+        inputOff.forEach((elem) => {
+            elem.addEventListener('keyup', (event) => {
+                let target = event.target;
+                if(target.matches('.income-title, .additional_income-item, .expenses-title, .additional_expenses-item')) {
+                   elem.value = elem.value.replace(/[^а-яА-Я , . ; ' \: ]/g, '');
+                }else{
+                    elem.value = elem.value.replace(/[^0-9]/g, '');
+                }
+            });
             
         });
 
@@ -314,6 +324,8 @@ class AddEvent extends AppData{
 
     
 
+    
+
    
 
 }
@@ -323,6 +335,13 @@ const appData = new AppData();
 const addEvent = new AddEvent();
 
 addEvent.addEventListeners();
+
+
+
+// salaryAmount.addEventListener('keyup', function(){
+//     this.value = this.value.replace(/[^\d]/g, '');[0-9]/g, ''
+// });/[^а-яА-Я , . ; ' \: ]/g, ''
+
 
 
 
